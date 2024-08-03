@@ -9,8 +9,8 @@ service = Service(executable_path="chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 driver.get("https://hrselfserve.info.yorku.ca/")
 
-username = "XXXXXXXX"  # Enter your ppy Username
-password = "XXXXXXXX"  # Enter your ppy password.
+username = "XXXXXX"  # Enter your ppy Username
+password = "XXXXXX"  # Enter your ppy password.
 
 try:
     # Wait for the 'linkser' button to be clickable and click it
@@ -47,10 +47,11 @@ try:
     )
     login_button.click()
     print("Clicked the login button.")
-
+    
+    time.sleep(30)
     # Wait for the hours card to be clickable and click it
     hours_card = WebDriverWait(driver, 20).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, "PTNUI_LAND_REC_GROUPLET_LBL$1"))
+        EC.element_to_be_clickable((By.XPATH, "//div[@id='win0groupletPTNUI_LAND_REC_GROUPLET$1']"))
     )
     hours_card.click()
     print("Clicked the hours card button.")
