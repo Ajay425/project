@@ -9,11 +9,13 @@ service = Service(executable_path="chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 driver.get("https://hrselfserve.info.yorku.ca/")
 
-username = ""  # Enter your ppy Username
-password = ""  # Enter your ppy password.
-timein = ""  #enter timein
-timeout ="" #enter timeout
+username = "ajay3"  # Enter your ppy Username
+password = "Watermelons@123"  # Enter your ppy password.
+timein = "8:30AM"  #enter timein
+timeout ="12:00PM" #enter timeout
 
+timein_2 = "1:00PM"  #enter timein
+timeout_2 ="4:30PM" #enter timeout
 
 try:
     # Wait for the 'linkser' button to be clickable and click it
@@ -66,14 +68,30 @@ try:
     print("Clicked the enter time button.")
 
     timein_field = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.ID, "PUNCH_TIME_1$8"))
+        EC.presence_of_element_located((By.ID, "PUNCH_TIME_1$0"))
     )
     timeout_field = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.ID, "PUNCH_TIME_4$8"))
+        EC.presence_of_element_located((By.ID, "PUNCH_TIME_4$0"))
     )
     
     timein_field.send_keys(timein)
     timeout_field.send_keys(timeout)
+
+    add_timestamp = WebDriverWait(driver, 20).until(
+        EC.element_to_be_clickable((By.ID, "ADD_PB$IMG$0"))
+    )
+
+    timein_field2 = WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.ID, "PUNCH_TIME_1$1"))
+    )
+
+    timeout_field2 = WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.ID, "PUNCH_TIME_4$1"))
+    )
+
+    timein_field2.send_keys(timein_2)
+    timeout_field2.send_keys(timeout_2)
+    
     
     #need to get the Id for in and out timestamps
     #in timestamps = PUNCH_TIME_1$8
