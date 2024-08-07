@@ -68,30 +68,37 @@ try:
     print("Clicked the enter time button.")
 
     timein_field = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.ID, "PUNCH_TIME_1$0"))
+        EC.presence_of_element_located((By.ID, "PUNCH_TIME_1$1"))
     )
     timeout_field = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.ID, "PUNCH_TIME_4$0"))
+        EC.presence_of_element_located((By.ID, "PUNCH_TIME_4$1"))
     )
     
     timein_field.send_keys(timein)
     timeout_field.send_keys(timeout)
 
     add_timestamp = WebDriverWait(driver, 20).until(
-        EC.element_to_be_clickable((By.ID, "ADD_PB$IMG$0"))
+        EC.element_to_be_clickable((By.ID, "ADD_PB$1"))
     )
 
+    add_timestamp.click()
+    time.sleep(15)
+
     timein_field2 = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.ID, "PUNCH_TIME_1$1"))
+        EC.presence_of_element_located((By.ID, "PUNCH_TIME_1$2"))
     )
 
     timeout_field2 = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.ID, "PUNCH_TIME_4$1"))
+        EC.presence_of_element_located((By.ID, "PUNCH_TIME_4$2"))
     )
 
     timein_field2.send_keys(timein_2)
     timeout_field2.send_keys(timeout_2)
     
+    submit_button = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "TL_LINK_WRK_SUBMIT_PB"))
+    )
+    submit_button.click()
     
     #need to get the Id for in and out timestamps
     #in timestamps = PUNCH_TIME_1$8
